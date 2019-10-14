@@ -39,4 +39,18 @@ describe('App component', () => {
     const component = findByTestAttribute(wrapper, 'appComponent');
     expect(component.length).toBe(1);
   });
+
+  it('exampleMethod_updatesStates', () => {
+    const classInstance = wrapper.instance();
+    classInstance.exampleMethod_updatesState();
+    const newState = classInstance.state.hideButton;
+    expect(newState).toBe(true);
+  });
+
+  it('exampleMethod_returnsAValue should return an incremented value', () => {
+    const classInstance = wrapper.instance();
+    const initialValue = 1;
+    const updatedValue = classInstance.exampleMethod_returnsAValue(initialValue);
+    expect(updatedValue).toBe(initialValue + 1);
+  });
 });
