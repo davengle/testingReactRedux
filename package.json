@@ -23,7 +23,7 @@
     "extends": "react-app"
   },
   "husky": {
-    "hook": {
+    "hooks": {
       "pre-push": "CI=true npm test"
     }
   },
