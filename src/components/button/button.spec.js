@@ -1,14 +1,14 @@
-import React from "react";
-import { findByTestAttribute, checkProps } from "./../../../Utils";
-import SharedButton from "./index";
-import { shallow } from "enzyme";
+import React from 'react';
+import { findByTestAttribute, checkProps } from './../../../Utils';
+import SharedButton from './index';
+import { shallow } from 'enzyme';
 
-describe("Shared Button Component", () => {
-  describe("Checking PropTypes", () => {
-    it("Should not throw a warning", () => {
+describe('Shared Button Component', () => {
+  describe('Checking PropTypes', () => {
+    it('Should not throw a warning', () => {
       const expectedProps = {
-        buttonText: "Example Button Text",
-        emitEvent: () => {}
+        buttonText: 'Example Button Text',
+        emitEvent: () => {},
       };
 
       const propsError = checkProps(SharedButton, expectedProps);
@@ -16,21 +16,30 @@ describe("Shared Button Component", () => {
     });
   });
 
-  describe("Renders", () => {
+  describe('Renders', () => {
     let wrapper;
+    let mockFunction;
 
     beforeEach(() => {
+      mockFunction = jest.fn();
       const props = {
-        buttonText: "Example Button Text",
-        emitEvent: () => {}
+        buttonText: 'Example Button Text',
+        emitEvent: mockFunction,
       };
 
       wrapper = shallow(<SharedButton {...props} />);
     });
 
-    it("Should Render a button", () => {
-      const button = findByTestAttribute(wrapper, "buttonComponent");
+    it('Should Render a button', () => {
+      const button = findByTestAttribute(wrapper, 'buttonComponent');
       expect(button.length).toBe(1);
+    });
+
+    it('should emit callback on click event', () => {
+      const button = findByTestAttribute(wrapper, 'buttonComponent');
+      button.simulate('click');
+      const callback = mockFunction.mock.calls.length;
+      expect(callback).toBe(1);
     });
   });
 });
