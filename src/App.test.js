@@ -35,7 +35,7 @@ describe('App component', () => {
     wrapper = setUp(initialState);
   });
 
-  it('Should render without error', () => {
+  it('Should render without errors', () => {
     const component = findByTestAttribute(wrapper, 'appComponent');
     expect(component.length).toBe(1);
   });
