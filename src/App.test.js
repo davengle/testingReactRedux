@@ -2,7 +2,7 @@ import React from 'react';
 import App from './App';
 import { shallow } from 'enzyme';
 import { findByTestAttribute, testStore } from './../Utils';
-import expectExport from 'expect';
+import expect from 'expect';
 
 const setUp = (initialState = {}) => {
   const store = testStore(initialState);
