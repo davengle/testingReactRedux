@@ -36,8 +36,10 @@ class App extends Component {
     };
 
     return (
-      <div>
-        <Header></Header>
+      <div className='App' data-test='appComponent'>
+        <Header>
+          <section className='main'></section>
+        </Header>
         <section className='main'>
           <Headline header='Posts' desc='Click the button to render posts' tempArr={tempArr} />
           <SharedButton {...configButton} />
